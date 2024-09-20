@@ -1,7 +1,7 @@
 {
-  "name": "react-softphone",
-  "version": "1.6.0",
-  "description": "Webrtc Softphone React",
+  "name": "react-softphone-mantine",
+  "version": "1.0.0",
+  "description": "Webrtc Softphone React fork using mantine components",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -9,10 +9,7 @@
     "node": ">=8",
     "npm": ">=5"
   },
-  "files": [
-    "dist",
-    "src"
-  ],
+  "files": ["dist", "src"],
   "scripts": {
     "build": "rollup -c",
     "release": "rollup -c && np",
@@ -20,19 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/prinze77/react-softphone.git"
+    "url": "git+https://github.com/scarletjack/react-softphone.git"
   },
-  "keywords": [
-    "Reqact",
-    "Webrtc",
-    "Softphone"
-  ],
+  "keywords": ["Reqact", "Webrtc", "Softphone"],
   "author": "Dionis",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/prinze77/react-softphone/issues"
+    "url": "https://github.com/scarletjack/react-softphone/issues"
   },
-  "homepage": "https://github.com/prinze77/react-softphone#readme",
+  "homepage": "https://github.com/scarletjack/react-softphone#readme",
   "peerDependencies": {
     "@material-ui/core": "^4.9.9",
     "@material-ui/icons": "^4.9.1",
@@ -52,14 +45,14 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.48",
     "@material-ui/pickers": "^3.2.10",
-    "clsx": "^1.1.0",
-    "jssip": "3.3.6",
-    "lodash": "^4.17.15",
+    "clsx": "^2.1.1",
+    "jssip": "3.10.1",
+    "lodash": "^4.17.21",
     "luxon": "^1.24.1",
     "np": "^7.5.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-helmet": "^5.2.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet": "^6.1.0",
     "react-swipeable-views": "^0.13.9",
     "styled-components": "^5.1.1"
   },
@@ -89,14 +82,6 @@
     "@testing-library/react-hooks": "^3.2.1",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
-    "eslint": "5.16.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-config-standard-react": "^6.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-promise": "^4.0.0",
-    "eslint-plugin-react": "^7.10.0",
-    "eslint-plugin-standard": "^3.1.0",
     "gh-pages": "^2.0.1",
     "react": "^16.9.0",
     "react-scripts": "^1.1.5",
