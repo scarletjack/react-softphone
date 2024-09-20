@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Button } from '@material-ui/core'
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }))
 
 function Header({ className, addAccount, ...rest }) {
@@ -14,28 +14,13 @@ function Header({ className, addAccount, ...rest }) {
     addAccount()
   }
   return (
-    <div
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
-      <Grid
-        alignItems='flex-end'
-        container
-        justify='space-between'
-        spacing={3}
-      >
+    <div {...rest} className={clsx(classes.root, className)}>
+      <Grid alignItems='flex-end' container justify='space-between' spacing={3}>
         <Grid item>
-          <Typography
-            component='h2'
-            gutterBottom
-            variant='overline'
-          >
+          <Typography component='h2' gutterBottom variant='overline'>
             Management
           </Typography>
-          <Typography
-            component='h1'
-            variant='h3'
-          >
+          <Typography component='h1' variant='h3'>
             Accounts
           </Typography>
         </Grid>
@@ -44,7 +29,6 @@ function Header({ className, addAccount, ...rest }) {
             color='primary'
             variant='contained'
             onClick={handleAddAccount}
-
           >
             Add Account
           </Button>
@@ -55,7 +39,7 @@ function Header({ className, addAccount, ...rest }) {
 }
 
 Header.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 }
 
 export default Header

@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  Grid,
-  Fab,
-  FormControlLabel,
-  Switch,
-  Tooltip
-} from '@material-ui/core'
+import { Grid, Fab, FormControlLabel, Switch, Tooltip } from '@material-ui/core'
 import {
   Mic,
   MicOff,
@@ -18,7 +12,7 @@ import {
   PhoneForwarded,
   Cancel,
   SwapCalls,
-  CallMerge
+  CallMerge,
 } from '@material-ui/icons'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -28,63 +22,63 @@ import SearchList from './SearchList'
 const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3)
+    paddingBottom: theme.spacing(3),
   },
   fab: {
     width: '41px',
     height: '41px',
-    background: '#f4f6f8'
+    background: '#f4f6f8',
   },
   callButton: {
     color: 'white',
     background: '#4ada61',
     '&:hover': {
-      background: '#94f3a4'
-    }
+      background: '#94f3a4',
+    },
   },
   endCallButton: {
     color: 'white',
     background: '#fa1941',
     '&:hover': {
-      background: '#f8939b'
-    }
+      background: '#f8939b',
+    },
   },
   pauseIcon: {
-    color: '#263238'
+    color: '#263238',
   },
   gridRaw: {
     paddingTop: '27px',
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   gridLastRaw: {
     paddingTop: '12px',
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   list: {
     width: '100%',
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
   },
   flexBetween: {
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   status: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: '0 0 0 10px'
+    margin: '0 0 0 10px',
   },
   input: {
     marginLeft: theme.spacing(1),
-    flex: 1
+    flex: 1,
   },
   iconButton: {
-    padding: '0 10px'
-  }
+    padding: '0 10px',
+  },
 }))
 
 function KeypadBlock({
@@ -99,7 +93,7 @@ function KeypadBlock({
   handleHold,
   asteriskAccounts = [],
   dialState,
-  setDialState
+  setDialState,
 }) {
   const classes = useStyles()
   const {
@@ -113,7 +107,7 @@ function KeypadBlock({
     inTransfer,
     transferControl,
     allowTransfer,
-    allowAttendedTransfer
+    allowAttendedTransfer,
   } = activeChanel
   const [anchorElTransfer, setAnchorElTransfer] = React.useState(null)
   const [anchorElAttended, setAnchorElAttended] = React.useState(null)
@@ -150,7 +144,11 @@ function KeypadBlock({
           <Grid container spacing={0} className={classes.gridRaw}>
             <Grid item xs={3}>
               <Grid item xs={12}>
-                <Tooltip title={muted ? 'Unmute mic' : 'Mute mic'} disableFocusListener disableTouchListener>
+                <Tooltip
+                  title={muted ? 'Unmute mic' : 'Mute mic'}
+                  disableFocusListener
+                  disableTouchListener
+                >
                   <div>
                     <Fab
                       disabled={!inCall}
@@ -173,7 +171,11 @@ function KeypadBlock({
               </Grid>
             </Grid>
             <Grid item xs={3}>
-              <Tooltip title={hold ? 'Resume' : 'Hold'} disableFocusListener disableTouchListener>
+              <Tooltip
+                title={hold ? 'Resume' : 'Hold'}
+                disableFocusListener
+                disableTouchListener
+              >
                 <div>
                   <Fab
                     disabled={!inCall || !inAnswer}
@@ -193,7 +195,9 @@ function KeypadBlock({
               <Tooltip title='Transfer Call'>
                 <div>
                   <Fab
-                    disabled={!inCall || !inAnswer || hold || !allowAttendedTransfer}
+                    disabled={
+                      !inCall || !inAnswer || hold || !allowAttendedTransfer
+                    }
                     className={classes.fab}
                     size='small'
                     aria-label='4'
@@ -240,78 +244,78 @@ function KeypadBlock({
             inTransfer &&
             transferControl ? (
               <Grid container spacing={0} className={classes.gridRaw}>
-                  <Grid item xs={3}>
+                <Grid item xs={3}>
                   <Tooltip title='Conference' aria-label='conference'>
-                      <span>
+                    <span>
                       <Fab
-                          disabled={false}
-                          className={classes.fab}
-                          size='small'
-                          aria-label='4'
-                          onClick={() => {
-                            handleCallAttendedTransfer('merge', {})
-                          }}
-                        >
-                          <CallMerge />
-                        </Fab>
+                        disabled={false}
+                        className={classes.fab}
+                        size='small'
+                        aria-label='4'
+                        onClick={() => {
+                          handleCallAttendedTransfer('merge', {})
+                        }}
+                      >
+                        <CallMerge />
+                      </Fab>
                     </span>
-                    </Tooltip>
+                  </Tooltip>
                 </Grid>
-                  <Grid item xs={3}>
+                <Grid item xs={3}>
                   <Tooltip title='Swap Caller' aria-label='swap-caller'>
-                      <span>
+                    <span>
                       <Fab
-                          disabled={false}
-                          className={classes.fab}
-                          size='small'
-                          aria-label='4'
-                          onClick={() => {
-                            handleCallAttendedTransfer('swap', {})
-                          }}
-                        >
-                          <SwapCalls />
-                        </Fab>
+                        disabled={false}
+                        className={classes.fab}
+                        size='small'
+                        aria-label='4'
+                        onClick={() => {
+                          handleCallAttendedTransfer('swap', {})
+                        }}
+                      >
+                        <SwapCalls />
+                      </Fab>
                     </span>
-                    </Tooltip>
+                  </Tooltip>
                 </Grid>
-                  <Grid item xs={3}>
+                <Grid item xs={3}>
                   <Tooltip title='Pass Call' aria-label='pass-call'>
-                      <span>
+                    <span>
                       <Fab
-                          disabled={false}
-                          className={classes.fab}
-                          size='small'
-                          aria-label='4'
-                          onClick={() => {
-                            handleCallAttendedTransfer('finish', {})
-                          }}
-                        >
-                          <PhoneForwarded />
-                        </Fab>
+                        disabled={false}
+                        className={classes.fab}
+                        size='small'
+                        aria-label='4'
+                        onClick={() => {
+                          handleCallAttendedTransfer('finish', {})
+                        }}
+                      >
+                        <PhoneForwarded />
+                      </Fab>
                     </span>
-                    </Tooltip>
+                  </Tooltip>
                 </Grid>
-                  <Grid item xs={3}>
+                <Grid item xs={3}>
                   <Tooltip title='Cancel Transfer' aria-label='cancel-transfer'>
-                      <span>
+                    <span>
                       <Fab
-                          disabled={false}
-                          className={classes.fab}
-                          size='small'
-                          aria-label='4'
-                          onClick={() => {
-                            handleCallAttendedTransfer('cancel', {})
-                          }}
-                        >
-                          <Cancel />
-                        </Fab>
+                        disabled={false}
+                        className={classes.fab}
+                        size='small'
+                        aria-label='4'
+                        onClick={() => {
+                          handleCallAttendedTransfer('cancel', {})
+                        }}
+                      >
+                        <Cancel />
+                      </Fab>
                     </span>
-                    </Tooltip>
+                  </Tooltip>
                 </Grid>
-                </Grid>
-              ) : (
-                <div />
-              )}
+              </Grid>
+            ) : (
+              <div />
+            )}
           </Grid>
 
           <Grid container spacing={0} className={classes.gridLastRaw}>
@@ -511,6 +515,6 @@ KeypadBlock.propTypes = {
   handleHold: PropTypes.any,
   asteriskAccounts: PropTypes.any,
   dialState: PropTypes.any,
-  setDialState: PropTypes.any
+  setDialState: PropTypes.any,
 }
 export default KeypadBlock

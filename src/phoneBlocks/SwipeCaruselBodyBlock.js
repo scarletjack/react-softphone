@@ -8,14 +8,14 @@ import {
   ListSubheader,
   List,
   Box,
-  Typography
+  Typography,
 } from '@material-ui/core'
 
 import {
   Settings as SettingsIcon,
   History as HistoryIcon,
   CallMade as CallMadeIcon,
-  CallReceived as CallReceivedIcon
+  CallReceived as CallReceivedIcon,
 } from '@material-ui/icons'
 
 import { DateTime } from 'luxon'
@@ -23,9 +23,7 @@ import PropTypes from 'prop-types'
 import SettingsBlock from './SettingsBlock'
 
 function TabPanel(props) {
-  const {
-    children, value, index, ...other
-  } = props
+  const { children, value, index, ...other } = props
 
   return (
     <Typography
@@ -44,7 +42,7 @@ function TabPanel(props) {
 function a11yProps(index) {
   return {
     id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`
+    'aria-controls': `full-width-tabpanel-${index}`,
   }
 }
 const useStyles = makeStyles((theme) => ({
@@ -63,15 +61,15 @@ const useStyles = makeStyles((theme) => ({
       'sans-serif',
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"'
+      '"Segoe UI Symbol"',
     ].join(','),
     '&:hover': {
       color: '#3949ab',
-      opacity: 1
+      opacity: 1,
     },
     '&:focus': {
-      color: '#3949ab'
-    }
+      color: '#3949ab',
+    },
   },
   root: {
     width: '100%',
@@ -80,20 +78,20 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     overflow: 'auto',
     maxHeight: 300,
-    padding: 0
+    padding: 0,
   },
   listSection: {
-    backgroundColor: 'inherit'
+    backgroundColor: 'inherit',
   },
   ul: {
     backgroundColor: 'inherit',
-    padding: 0
+    padding: 0,
   },
   tab: {
     '& .MuiBox-root': {
-      padding: theme.spacing(2)
-    }
-  }
+      padding: theme.spacing(2),
+    },
+  },
 }))
 
 function SwipeCaruselBodyBlock({
@@ -103,7 +101,7 @@ function SwipeCaruselBodyBlock({
   handleSettingsSlider,
   handleConnectOnStart,
   handleNotifications,
-  timelocale
+  timelocale,
 }) {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
@@ -153,9 +151,7 @@ function SwipeCaruselBodyBlock({
           'No Calls'
         ) : (
           <List className={classes.root} subheader={<li />}>
-            {calls.map(({
-              sessionId, direction, number, time, status
-            }) => (
+            {calls.map(({ sessionId, direction, number, time, status }) => (
               <li key={`section-${sessionId}`} className={classes.listSection}>
                 <ul className={classes.ul}>
                   <ListSubheader
@@ -167,19 +163,30 @@ function SwipeCaruselBodyBlock({
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
-                      flexDirection: 'unset'
+                      flexDirection: 'unset',
                     }}
                   >
                     <span>
-                      {`${number}`}
-                      {' '}
+                      {`${number}`}{' '}
                       {direction === 'outgoing' ? (
-                        <CallMadeIcon style={{ fontSize: number.length > 11 ? '0.55rem' : '0.675rem' }} />
+                        <CallMadeIcon
+                          style={{
+                            fontSize:
+                              number.length > 11 ? '0.55rem' : '0.675rem',
+                          }}
+                        />
                       ) : (
-                        <CallReceivedIcon style={{ fontSize: number.length > 11 ? '0.55rem' : '0.675rem' }} />
+                        <CallReceivedIcon
+                          style={{
+                            fontSize:
+                              number.length > 11 ? '0.55rem' : '0.675rem',
+                          }}
+                        />
                       )}
                     </span>
-                    {DateTime.fromISO(time.toISOString()).setZone(timelocale).toString()}
+                    {DateTime.fromISO(time.toISOString())
+                      .setZone(timelocale)
+                      .toString()}
                   </ListSubheader>
                   <Divider />
                 </ul>
@@ -200,11 +207,9 @@ SwipeCaruselBodyBlock.propTypes = {
   handleConnectOnStart: PropTypes.any,
   handleNotifications: PropTypes.any,
   callVolume: PropTypes.any,
-  timelocale: PropTypes.any
-
+  timelocale: PropTypes.any,
 }
 TabPanel.propTypes = {
-  props: PropTypes.any
-
+  props: PropTypes.any,
 }
 export default SwipeCaruselBodyBlock

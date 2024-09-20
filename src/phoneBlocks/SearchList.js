@@ -9,7 +9,7 @@ import {
   ListItem,
   ListItemText,
   Paper,
-  Popover
+  Popover,
 } from '@material-ui/core'
 import { Search } from '@material-ui/icons'
 import OnlineIndicator from './OnlineIndicator'
@@ -18,26 +18,26 @@ const useStyles = makeStyles((theme) => ({
   flexBetween: {
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   status: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: '0 0 0 10px'
+    margin: '0 0 0 10px',
   },
   input: {
     marginLeft: theme.spacing(1),
-    flex: 1
+    flex: 1,
   },
   iconButton: {
-    padding: '0 10px'
+    padding: '0 10px',
   },
   list: {
     width: '100%',
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
-  }
+    backgroundColor: theme.palette.background.paper,
+  },
 }))
 
 function SearchList({
@@ -45,7 +45,7 @@ function SearchList({
   onClickList,
   ariaDescribedby,
   anchorEl,
-  setAnchorEl
+  setAnchorEl,
 }) {
   const classes = useStyles()
   const [list, setList] = React.useState(asteriskAccounts)
@@ -59,15 +59,16 @@ function SearchList({
   }
 
   useEffect(() => {
-    const searchedAccounts = asteriskAccounts
-      .filter((acc) => acc.label.toLowerCase()
-        .includes(inputSearch.toLowerCase()) || acc.accountId
-        .includes(inputSearch))
+    const searchedAccounts = asteriskAccounts.filter(
+      (acc) =>
+        acc.label.toLowerCase().includes(inputSearch.toLowerCase()) ||
+        acc.accountId.includes(inputSearch)
+    )
     setList(searchedAccounts)
   }, [inputSearch, asteriskAccounts])
   return (
     <>
-      { open ? (
+      {open ? (
         <Popover
           id={id}
           open={open}
@@ -78,21 +79,26 @@ function SearchList({
         >
           <List component='nav' className={classes.list} aria-label='accounts'>
             <ListItem>
-              <ListItemText primary={(
-                <Paper style={{ padding: '5px' }}>
-                  <InputBase
-                    id='inputSearch'
-                    className={classes.input}
-                    placeholder='Search'
-                    inputProps={{ 'aria-label': 'search' }}
-                    onChange={(event) => setInputSearch(event.target.value)}
-                    defaultValue={inputSearch}
-                  />
-                  <IconButton type='submit' className={classes.iconButton} aria-label='search'>
-                    <Search />
-                  </IconButton>
-                </Paper>
-              )}
+              <ListItemText
+                primary={
+                  <Paper style={{ padding: '5px' }}>
+                    <InputBase
+                      id='inputSearch'
+                      className={classes.input}
+                      placeholder='Search'
+                      inputProps={{ 'aria-label': 'search' }}
+                      onChange={(event) => setInputSearch(event.target.value)}
+                      defaultValue={inputSearch}
+                    />
+                    <IconButton
+                      type='submit'
+                      className={classes.iconButton}
+                      aria-label='search'
+                    >
+                      <Search />
+                    </IconButton>
+                  </Paper>
+                }
               />
             </ListItem>
             <Divider />
@@ -102,26 +108,24 @@ function SearchList({
                 key={account.accountId}
                 onClick={() => handleClick(account.accountId)}
               >
-                <ListItemText primary={(
-                  <span className={classes.flexBetween}>
-                    {account.label}
-                    {' '}
-                    {account.accountId}
-                    {' '}
-                    <div className={classes.status}>
-                      <OnlineIndicator
-                        size='small'
-                        status={account.online === 'true' ? 'online' : 'busy'}
-                      />
-                    </div>
-                  </span>
-                )}
+                <ListItemText
+                  primary={
+                    <span className={classes.flexBetween}>
+                      {account.label} {account.accountId}{' '}
+                      <div className={classes.status}>
+                        <OnlineIndicator
+                          size='small'
+                          status={account.online === 'true' ? 'online' : 'busy'}
+                        />
+                      </div>
+                    </span>
+                  }
                 />
               </ListItem>
             ))}
           </List>
         </Popover>
-      ) : null }
+      ) : null}
     </>
   )
 }
@@ -130,6 +134,6 @@ SearchList.propTypes = {
   onClickList: PropTypes.any,
   ariaDescribedby: PropTypes.any,
   anchorEl: PropTypes.any,
-  setAnchorEl: PropTypes.any
+  setAnchorEl: PropTypes.any,
 }
 export default SearchList
